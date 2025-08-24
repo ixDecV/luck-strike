@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lucky Strike — Wheel Spinner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="bg-anim"></div>
+
+  <!-- Toasts -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- App Shell -->
+  <div class="app-shell">
+    <header class="app-header glass">
+      <div class="brand">
+        <span class="logo">🎯</span>
+        <h1>Lucky Strike</h1>
+      </div>
+      <div class="header-right">
+        <span id="headerUser" class="chip">Guest</span>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <!-- Screen: Username -->
+      <section id="screen-username" class="screen active">
+        <div class="panel glass">
+          <h2>Choose a Username</h2>
+          <p class="muted">You’ll use this name in lobbies and leaderboards.</p>
+          <div class="row">
+            <input id="usernameInput" class="input" placeholder="e.g. NovaStriker" maxlength="18"/>
+            <button id="usernameBtn" class="btn primary">Let’s go</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Screen: Main Menu -->
+      <section id="screen-menu" class="screen">
+        <div class="panel glass">
+          <h2 id="welcomeUser">Welcome!</h2>
+          <div class="btn-grid">
+            <button id="playBtn" class="btn primary large">▶ Play</button>
+            <button id="changeUserBtn" class="btn ghost">Change Username</button>
+            <button id="exitBtn" class="btn danger">Exit</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Screen: Lobby -->
+      <section id="screen-lobby" class="screen">
+        <div class="panel glass">
+          <h2>Create Lobby</h2>
+          <div class="seg">
+            <div class="seg-title">Opponent</div>
+            <div class="btn-row">
+              <button id="botBtn" class="btn pill">Play with Bot</button>
+              <button id="playersBtn" class="btn pill">Play with Players</button>
+            </div>
+            <div id="playerCount" class="btn-row hidden">
+              <button id="twoPlayersBtn" class="btn pill">2 Players</button>
+              <button id="fourPlayersBtn" class="btn pill">4 Players</button>
+            </div>
+          </div>
+          <div class="row end">
+            <button id="createLobbyBtn" class="btn primary" disabled>Create Lobby</button>
+            <button id="exitLobbyBtn" class="btn ghost">Back</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Screen: Game (Wheel Spinner) -->
+      <section id="screen-game" class="screen">
+        <div class="layout">
+          <div class="col-left">
+            <div class="panel glass">
+              <h3>Players</h3>
+              <div id="playerList" class="player-list"></div>
+              <div class="stats">
+                <div class="stat">
+                  <div class="label">Your Points</div>
+                  <div class="value"><span id="points">100</span></div>
+                </div>
+              </div>
+              <div class="divider"></div>
+              <div class="bet-wrap">
+                <label for="betInput" class="label">Place your bet</label>
+                <div class="row">
+                  <input id="betInput" type="number" min="1" class="input" placeholder="e.g. 10"/>
+                  <button id="betBtn" class="btn primary">Spin 🎡</button>
+                </div>
+                <p id="betHint" class="muted">Tip: you can’t bet more than your points.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-right">
+            <div class="panel glass wheel-panel">
+              <div class="wheel-container">
+                <div id="wheel" class="wheel"></div>
+                <div class="pointer">
+                  <svg width="36" height="36" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M12 2L22 20H2z"/>
+                  </svg>
+                </div>
+              </div>
+              <div id="result" class="result"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <span class="muted">© Lucky Strike</span>
+    </footer>
+  </div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
